@@ -11,7 +11,7 @@ class ComplaintType extends Model
     protected $fillable = [
         'type'
     ];
-    public function complaints(): HasMany
+    public function complaints()
     {
         return $this->hasMany(Complaint::class);
     }

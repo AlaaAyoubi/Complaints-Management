@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Models\Complaint; // هذا السطر ضروري
 
 class User extends Authenticatable
 {
@@ -23,6 +24,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'userType'
     ];
 
     /**
@@ -48,7 +50,7 @@ class User extends Authenticatable
         ];
     }
 
-    public function complaints(): HasMany{
+    public function complaints(){
         return $this->hasMany(Complaint::class);
     }
 }

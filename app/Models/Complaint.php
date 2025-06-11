@@ -14,7 +14,7 @@ class Complaint extends Model
             'details'
     ];
 
-    public function users(): BelongsTo
+    public function users()
     {
         return $this->belongsTo(User::class);
     }
