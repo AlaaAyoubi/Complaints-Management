@@ -30,14 +30,14 @@
                             <table class="min-w-full divide-y divide-gray-200">
                                 <thead class="bg-gray-50">
                                     <tr>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        <!-- <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             {{ __('ID') }}
-                                        </th>
+                                        </th> -->
                                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             {{ __('Complaint Type') }}
                                         </th>
                                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            {{ __('Description') }}
+                                            {{ __('Details') }}
                                         </th>
                                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             {{ __('Status') }}
@@ -53,12 +53,11 @@
                                 <tbody class="bg-white divide-y divide-gray-200">
                                     @foreach ($complaints as $complaint)
                                         <tr>
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            <!-- <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                                 {{ $complaint->id }}
-                                            </td>
+                                            </td> -->
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                                {{ $complaint->complaintType->type }}
-                                            </td>
+                                                {{ $complaint->complaintType ? $complaint->complaintType->type : 'Unknown Type' }}                                            </td>
                                             <td class="px-6 py-4 text-sm text-gray-500 max-w-xs truncate">
                                                 {{ $complaint->details }}
                                             </td>
