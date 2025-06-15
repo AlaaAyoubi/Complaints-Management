@@ -1,4 +1,4 @@
-// config/complaints.php
+
 <?php
 
 return [

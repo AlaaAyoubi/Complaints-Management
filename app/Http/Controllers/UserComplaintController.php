@@ -36,6 +36,7 @@ class UserComplaintController extends Controller
      */
     public function store(StoreComplaintRequest $request) // **غيرنا Request إلى StoreComplaintRequest**
     {
+        
         // 
         // التحقق من الصحة سيتم تلقائيًا قبل دخول الدالة.
 

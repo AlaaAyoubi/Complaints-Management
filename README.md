@@ -1,61 +1,103 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Complaint Management System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This is a robust and user-friendly **Complaint Management System** built with **Laravel**, designed to streamline the process of submitting, tracking, and managing user complaints efficiently. The application provides a clear distinction between user and administrative functionalities, ensuring a secure and organized workflow for handling feedback and issues.
 
-## About Laravel
+## 🚀 Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+* **User Dashboard:** Users can easily submit new complaints and view the status and details of their submitted complaints.
+* **Admin Panel:** Administrators have a comprehensive overview of all complaints, with capabilities to:
+    * View all submitted complaints.
+    * Filter complaints by user and complaint type.
+    * Update the status of complaints (e.g., Pending, In Progress, Resolved, Rejected).
+* **Role-Based Access Control:** Secure authentication system with distinct roles for users and administrators, ensuring appropriate access to features.
+* **Robust Validation:** Implemented server-side validation using Laravel Form Requests to ensure data integrity and provide clear error messages to users.
+* **Configurable Settings:** Utilizes a custom configuration file (`config/complaints.php`) for easily managing application settings such as default complaint statuses and pagination limits, promoting flexibility and maintainability.
+* **Performance Optimized:** Incorporates Eager Loading to address N+1 query problems, significantly enhancing database query efficiency and overall application performance, especially on data-heavy pages.
+* **Intuitive User Interface:** Designed for ease of use for both submitting complaints and administrative management.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🛠️ Technologies Used
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+* **PHP:** Core programming language.
+* **Laravel:** PHP Web Application Framework.
+* **MySQL:** Relational Database Management System.
+* **HTML, CSS (Tailwind CSS), JavaScript:** For front-end development and styling.
+* **Composer:** PHP dependency manager.
+* **NPM / Yarn:** JavaScript package managers (for frontend assets if applicable).
 
-## Learning Laravel
+## 📦 Installation
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Follow these steps to get the project up and running on your local machine:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+1.  **Clone the Repository:**
+    ```bash
+    git clone [https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME.git](https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME.git)
+    cd YOUR_REPOSITORY_NAME # Navigate into the project directory
+    ```
+    *(Replace `YOUR_USERNAME` and `YOUR_REPOSITORY_NAME` with your actual GitHub username and repository name.)*
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+2.  **Install PHP Dependencies:**
+    ```bash
+    composer install
+    ```
 
-## Laravel Sponsors
+3.  **Install JavaScript Dependencies (if applicable, for Tailwind CSS, etc.):**
+    ```bash
+    npm install
+    # or yarn install
+    ```
+    Then, compile assets:
+    ```bash
+    npm run dev
+    # or yarn dev
+    ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+4.  **Environment Configuration:**
+    * Create a copy of the `.env.example` file and name it `.env`:
+        ```bash
+        cp .env.example .env
+        ```
+    * Generate an application key:
+        ```bash
+        php artisan key:generate
+        ```
+    * Open the `.env` file and configure your database connection (e.g., `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`).
 
-### Premium Partners
+5.  **Database Migration and Seeding:**
+    Run the migrations to create tables and seed the database with initial data (e.g., complaint types, default user/admin).
+    ```bash
+    php artisan migrate:fresh --seed
+    ```
+    *(This command will drop all existing tables and re-create them, then run seeders. Use with caution in production.)*
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+6.  **Start the Local Development Server:**
+    ```bash
+    php artisan serve
+    ```
+    The application will typically be accessible at `http://127.0.0.1:8000`.
 
-## Contributing
+## 🚀 Usage
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### For Users:
 
-## Code of Conduct
+1.  **Register:** Navigate to `/register` to create a new user account.
+2.  **Login:** Access the login page at `/login` with your credentials.
+3.  **Submit Complaint:** After logging in, go to the user dashboard to submit new complaints.
+4.  **View Complaints:** See the status and details of your previously submitted complaints on your dashboard.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### For Administrators:
 
-## Security Vulnerabilities
+1.  **Login:** Access the login page at `/login`.
+    * **Default Admin Credentials (if set in seeders):**
+        * **Email:** `admin@example.com`
+        * **Password:** `password` (or whatever you set in `UserSeeder.php`)
+2.  **Manage Complaints:** From the admin dashboard, view, filter, and update the status of all user-submitted complaints.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 🤝 Contributing
 
-## License
+Contributions are welcome! If you find a bug or have a feature request, please open an issue or submit a pull request.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 📄 License
+
+This project is open-source and licensed under the [MIT License](https://opensource.org/licenses/MIT).
+
+---

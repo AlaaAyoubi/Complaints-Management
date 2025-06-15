@@ -28,7 +28,10 @@
                         <div class="mb-4">
                             <x-input-label for="details" :value="__('Complaint Details')" />
                             <textarea id="details" name="details" rows="5" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" required>{{ old('details') }}</textarea>
-                            <x-input-error :messages="$errors->get('details')" class="mt-2" />
+                            @error('details')
+                                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p> 
+                            @enderror
+                            <!-- <x-input-error :messages="$errors->get('details')" class="mt-2" /> -->
                         </div>
 
                         <div class="flex items-center justify-end mt-4">
