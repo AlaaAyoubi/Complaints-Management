@@ -17,7 +17,7 @@ class UserComplaintController extends Controller
     {
         // جلب الشكاوى الخاصة بالمستخدم الذي قام بتسجيل الدخول فقط
         // ترتيبها زمنيًا عكسيًا (الأحدث أولاً) وتقسيمها إلى صفحات
-        $complaints = Auth::user()->complaints()->latest()->paginate(config('complaints.pagination.user_index'));
+        $complaints = Auth::user()->complaints()->with('complaintType')->latest()->paginate(config('complaints.pagination.user_index'));
         return view('user.complaints.index', compact('complaints'));
     }
 

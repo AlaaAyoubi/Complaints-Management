@@ -28,7 +28,7 @@ class AdminComplaintController extends Controller
         }
 
         // جلب الشكاوى بترتيب زمني عكسي (الأحدث أولاً) وتقسيمها إلى صفحات
-        $complaints = $query->latest()->paginate(10); // 10 شكاوى لكل صفحة
+        $complaints = $query->latest()->paginate(config('complaints.pagination.admin_index')); // 10 شكاوى لكل صفحة
 
         // جلب جميع المستخدمين (لتعبئة قائمة الفلترة)
         // يمكنك فلترة هنا لجلب المستخدمين العاديين فقط إذا أردت
@@ -57,7 +57,7 @@ class AdminComplaintController extends Controller
     {
         // التحقق من صحة حالة الشكوى
         $request->validate([
-            'status' => 'required|in:pending,in_progress,resolved,rejected', // الحالات الممكنة
+            'status' => 'required|in:' . implode(',', config('complaints.statuses')),// الحالات الممكنة
         ]);
 
         // تحديث حالة الشكوى
