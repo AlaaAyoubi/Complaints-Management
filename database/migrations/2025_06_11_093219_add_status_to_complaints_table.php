@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('complaints', function (Blueprint $table) {
             // إضافة عمود 'status' من نوع string بقيمة افتراضية 'pending'
-            $table->string('status')->default('pending')->after('details');
+            $table->string('status')->default(config('complaints.default_status'));
             // '.after('details')' هو اختياري ويحدد موقع العمود بعد عمود 'details'
         });
     }

@@ -17,7 +17,7 @@ class UserComplaintController extends Controller
     {
         // جلب الشكاوى الخاصة بالمستخدم الذي قام بتسجيل الدخول فقط
         // ترتيبها زمنيًا عكسيًا (الأحدث أولاً) وتقسيمها إلى صفحات
-        $complaints = Auth::user()->complaints()->latest()->paginate(10);
+        $complaints = Auth::user()->complaints()->latest()->paginate(config('complaints.pagination.user_index'));
         return view('user.complaints.index', compact('complaints'));
     }
 
@@ -47,7 +47,7 @@ class UserComplaintController extends Controller
         Auth::user()->complaints()->create([
             'complaint_type_id' => $validatedData['complaint_type_id'], // نستخدم البيانات التي تم التحقق من صحتها
             'details' => $validatedData['details'],                     // نستخدم البيانات التي تم التحقق من صحتها
-            'status' => 'pending',
+            'status' => config('complaints.default_status'),
         ]);
 
         // إعادة توجيه المستخدم إلى صفحة عرض شكاواه مع رسالة نجاح
