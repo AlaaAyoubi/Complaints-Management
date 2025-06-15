@@ -6,6 +6,7 @@ use App\Models\Complaint; // لاستخدام نموذج الشكوى
 use App\Models\ComplaintType; // لاستخدام نموذج نوع الشكوى
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth; // لاستخدام Auth
+use App\Http\Requests\StoreComplaintRequest;
 
 class UserComplaintController extends Controller
 {
@@ -33,19 +34,19 @@ class UserComplaintController extends Controller
     /**
      * Store a newly created complaint in storage.
      */
-    public function store(Request $request)
+    public function store(StoreComplaintRequest $request) // **غيرنا Request إلى StoreComplaintRequest**
     {
-        // التحقق من صحة البيانات المدخلة من قبل المستخدم
-        $request->validate([
-            'complaint_type_id' => 'required|exists:complaint_types,id', // يجب أن يكون موجودًا في جدول أنواع الشكاوى
-            'details' => 'required|string|max:1000', // النص مطلوب، نصي، بحد أقصى 1000 حرف
-        ]);
+        // 
+        // التحقق من الصحة سيتم تلقائيًا قبل دخول الدالة.
+
+        // البيانات التي تم التحقق من صحتها جاهزة للاستخدام
+        // $request->validated() ترجع مصفوفة بالبيانات التي اجتازت التحقق.
+        $validatedData = $request->validated();
 
         // إنشاء شكوى جديدة وربطها بالمستخدم الحالي
-        // حالة الشكوى الافتراضية هي 'pending'
         Auth::user()->complaints()->create([
-            'complaint_type_id' => $request->complaint_type_id,
-            'details' => $request->details,
+            'complaint_type_id' => $validatedData['complaint_type_id'], // نستخدم البيانات التي تم التحقق من صحتها
+            'details' => $validatedData['details'],                     // نستخدم البيانات التي تم التحقق من صحتها
             'status' => 'pending',
         ]);
 
